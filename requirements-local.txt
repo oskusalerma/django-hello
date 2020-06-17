@@ -1,0 +1,3 @@
+-r requirements-base.txt
+
+# add packages needed only for developer-local setups
