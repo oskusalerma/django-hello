@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+import requests
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,6 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'dit.oskusoft.com']
 
+# to get ELB health check working
+EC2_IP = requests.get('http://169.254.169.254/latest/meta-data/local-ipv4').text
+ALLOWED_HOSTS.append(EC2_IP)
 
 # Application definition
 
