@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 
+from .models import Post
+
 def health_check(req):
     # TODO: connect to db
 
@@ -7,6 +9,6 @@ def health_check(req):
 
 
 def home(req):
-    # TODO: read response from db
+    p = Post.objects.all()[0]
 
-    return HttpResponse('I am groot')
+    return HttpResponse(p.content, content_type='text/plain')
